@@ -1,0 +1,32 @@
+<%INIT>
+
+my ( $old, $new );
+
+if ($TransactionId) {
+    my $txn = RT::Transaction->new( $session{'CurrentUser'} );
+    $txn->Load($TransactionId);
+    if ( $txn->Id ) {
+        $old = $txn->OldValue;
+        $new = $txn->NewValue;
+    }
+    else {
+        RT->Logger->error("Could not load transaction #$TransactionId");
+        $m->abort;
+    }
+}
+else {
+    $m->abort;
+}
+
+use Text::WordDiff;
+my $diff = word_diff( \$old, \$new, { STYLE => 'HTML' } );
+$diff = $m->comp( '/Elements/ScrubHTML', Content => $diff );
+$diff =~ s|\n|<br />|g;
+
+</%INIT>
+<% $diff |n %>
+% $m->abort();
+
+<%ARGS>
+$TransactionId => undef
+</%ARGS>

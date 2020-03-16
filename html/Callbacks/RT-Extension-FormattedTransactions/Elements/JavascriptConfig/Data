@@ -1,0 +1,8 @@
+<%INIT>
+$Catalog->{show_details} ||= "Show Details"; #loc
+$Catalog->{hide_details} ||= "Hide Details"; #loc
+</%INIT>
+
+<%ARGS>
+$Catalog
+</%ARGS>

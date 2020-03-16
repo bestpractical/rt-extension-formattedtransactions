@@ -1,0 +1,23 @@
+<%INIT>
+if ( $Transaction->Type eq 'CustomField' && $Transaction->Field ) {
+    my $cf = RT::CustomField->new( $session{CurrentUser} );
+    $cf->SetContextObject( $Transaction->Object );
+    $cf->Load( $Transaction->Field );
+    if ( $cf->Id && $cf->Type =~ /text/i ) {
+        my $id = $Transaction->Id;
+
+        # Ignore $ShowActions as it's a page helper, not a real action.
+        push @$Actions,
+            {
+            class => "toggle-txn-details",
+            title => loc('Show Details'),
+            path  => '#',
+            };
+    }
+}
+</%INIT>
+
+<%ARGS>
+$Transaction
+$Actions
+</%ARGS>
