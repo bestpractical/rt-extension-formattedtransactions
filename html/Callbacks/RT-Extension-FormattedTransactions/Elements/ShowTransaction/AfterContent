@@ -2,11 +2,13 @@
   <table>
 % if ( $old eq loc('(no value)')  ) {
     <tr>
+      <td class="label"><% loc('Added') %>:</td>
       <td class="value"><% $new |n %></td>
     </tr>
 % }
 % elsif ( $new eq loc('(no value)')  ) {
     <tr>
+      <td class="label"><% loc('Deleted') %>:</td>
       <td class="value"><% $old |n %></td>
     </tr>
 % }
