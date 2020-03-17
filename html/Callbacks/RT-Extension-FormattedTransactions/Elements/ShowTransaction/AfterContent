@@ -22,7 +22,7 @@
       <td class="value"><% $new |n %></td>
     </tr>
     <tr class="diff">
-      <td class="label"><% loc('Diff') %>:</td>
+      <td class="label"><% loc('Changes') %>:</td>
       <td class="value"><% loc('Loading...') %></td>
     </tr>
 % }
