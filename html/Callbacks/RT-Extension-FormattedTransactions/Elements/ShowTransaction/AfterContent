@@ -1,4 +1,4 @@
-<div class="details hidden %>" id="txn-<% $Transaction->Id %>-details">
+<div class="details hidden" id="txn-<% $Transaction->Id %>-details">
   <table>
 % if ( $old eq loc('(no value)')  ) {
     <tr>
